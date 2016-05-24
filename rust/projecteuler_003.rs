@@ -21,16 +21,19 @@ fn main() {
 	let mut primes = vec![2];
 	let mut last_prime = 0;
 
+	print!("Prime Factors: ");
+
 	/* checks if the "number" is divisible by the last prime 
 	number in the vector "primes". If it is divisible, it divides
 	and gets a new "number". Repeat the process until the "new"
 	number is a prime number itself. This is the largest prime factor. */
 	loop {
 		last_prime = primes[primes.len()-1];
-
 		if number % last_prime == 0 {
+			print!("{}, ", last_prime);
 			number = number / last_prime;
 			if is_prime(number) {
+				print!("{} ", number);
 				break;
 			}
 		}
@@ -38,7 +41,7 @@ fn main() {
 		primes.push(next_prime(&last_prime));
 	}
 
-	println!("Largest prime factor: {}", number);
+	println!("\nLargest prime factor: {}", number);
 }
 
 //takes in an integer and finds
